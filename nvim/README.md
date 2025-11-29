@@ -28,3 +28,16 @@ github.com/vague-theme/vague.nvim
 
 
 github.com/scottmckendry/nix/tree/0fc0b9ce9f87283c35c261af74bfd222ef5886f8/nvim
+
+### LSP
+https://microsoft.github.io/language-server-protocol/implementors/servers/
+https://wiki.archlinux.org/title/Neovim
+https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+
+### Mappings
+Правила маппингов (хоткеев)
+1. Регистр имеет значение
+2. C-t – значит что нужно нажать Ctrl + t
+
+gd – Go to definition (Перейти к определению)
+ctrl
