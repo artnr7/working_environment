@@ -1,27 +1,27 @@
---local keymap = vim.keymap.set
+local keymap = vim.keymap.set
 
 local lspmap = function(keys, func, desc, mode)
   mode = mode or "n"
   vim.keymap.set(mode, keys, func, { desc = 'LSP: ' .. desc })
 end
 
---local map = function(keys, func, desc, mode)
---  mode = mode or "n"
---  vim.keymap.set(mode, keys, func, desc)
---end
+local map = function(keys, func, desc, mode)
+  mode = mode or "n"
+  vim.keymap.set(mode, keys, func, { desc = 'Default: ' .. desc})
+end
 
 
 -- File tree
---map( "<C-t>", "<cmd>Neotree toggle<CR>", "Toggle file tree" )
---map( "<C-h>", "<C-w>h", "Change to the left win" )
---map( "<C-l>", "<C-w>l", "Change to the right win" )
---map( "<C-j>", "<C-w>j", "Change to the down win" )
---map( "<C-k>", "<C-w>k", "Change to the upper win" )
+map( "<C-t>", "<cmd>Neotree toggle<CR>", "Toggle file tree" )
+map( "<C-h>", "<C-w>h", "Change to the left win" )
+map( "<C-l>", "<C-w>l", "Change to the right win" )
+map( "<C-j>", "<C-w>j", "Change to the down win" )
+map( "<C-k>", "<C-w>k", "Change to the upper win" )
 
 -- Telescope
---keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
---keymap("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
---keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffers" })
+map("<leader>ff", "<cmd>Telescope find_files<CR>", "Find files" )
+map("<leader>fg", "<cmd>Telescope live_grep<CR>",  "Live grep" )
+map("<leader>fb", "<cmd>Telescope buffers<CR>", "Find buffers" )
 
 -- LSP
 --keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
@@ -33,6 +33,34 @@ lspmap('grn', vim.lsp.buf.rename, '[R]e[n]ame')
 -- or a suggestion from your LSP for this to activate.
 lspmap( 'gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 
+-- Find references for the word under your cursor.
+--lspmap('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+
+-- Jump to the implementation of the word under your cursor.
+--  Useful when your language has ways of declaring types without an actual implementation.
+--lspmap('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+
+-- Jump to the definition of the word under your cursor.
+--  This is where a variable was first declared, or where a function is defined, etc.
+--  To jump back, press <C-t>.
+--lspmap('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+
+-- WARN: This is not Goto Definition, this is Goto Declaration.
+--  For example, in C this would take you to the header.
+--lspmap('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
+-- Fuzzy find all the symbols in your current document.
+--  Symbols are things like variables, functions, types, etc.
+--lspmap('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
+
+-- Fuzzy find all the symbols in your current workspace.
+--  Similar to document symbols, except searches over your entire project.
+--lspmap('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+
+-- Jump to the type of the word under your cursor.
+--  Useful when you're not sure what type a variable is and you want to see
+--  the definition of its *type*, not where it was *defined*.
+--lspmap('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
 --keymap("n", "K", vim.lsp.buf.hover, { desc = "Show documentation" })
 --keymap("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
@@ -42,8 +70,8 @@ lspmap( 'gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 --keymap("n", "<F9>", "<cmd>lua require('dap').toggle_breakpoint()<CR>", { desc = "Toggle breakpoint" })
 
 -- Плавающий терминал
---keymap("n", "<leader>t", "<cmd>FloatermToggle<CR>", { desc = "Toggle floating terminal" })
---keymap("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+map( "<leader>t", "<cmd>FloatermToggle<CR>", "Toggle floating terminal" )
+map( "<Esc>", "<C-\\><C-n>", "Exit terminal mode", "t" )
 
 -- Управление вкладками
 --keymap("n", "<leader>tc", "<cmd>BufferLinePickClose<CR>", { desc = "Close tab" })
