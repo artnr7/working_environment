@@ -1,4 +1,8 @@
-nvim-treesitter — точное синтаксическое выделение, умные текстовые объекты, инкрементальный парсинг, поддержка множества языков.
+## Полное руководство по изучению nvim лежит в kickstart.nvim/init.lua
+
+### Топ плагинов для nvim
+nvim-treesitter — точное синтаксическое выделение, умные текстовые объекты,
+инкрементальный парсинг, поддержка множества языков.
 
 Telescope — мощный менеджер поиска и навигации по файлам и символам.
 
@@ -28,16 +32,17 @@ github.com/vague-theme/vague.nvim
 
 
 github.com/scottmckendry/nix/tree/0fc0b9ce9f87283c35c261af74bfd222ef5886f8/nvim
+https://www.youtube.com/watch?v=m8C0Cq9Uv9o&t=73s
+https://www.youtube.com/watch?v=CuWfgiwI73Q
+Полезный репозиторий, на котором можно найти kickstart и топ плагинов
+https://github.com/nvim-lua
+Тред посвящённый смене esc на capslock
+https://www.reddit.com/r/neovim/comments/12inq2s/how_to_keymap_caps_lock_key_to_be_used_as_esc_for/
 
-### LSP
-https://microsoft.github.io/language-server-protocol/implementors/servers/
-https://wiki.archlinux.org/title/Neovim
-https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 
-### Mappings
-Правила маппингов (хоткеев)
-1. Регистр имеет значение
-2. C-t – значит что нужно нажать Ctrl + t
+### Некоторые штуки, которые были полезны лично мне
+* Чтобы посмотреть документацию по какой-либо функции используйте help <func
+* При объявлении плагина в таблице есть два варианта установки/проверки_установки:  
+    1. Вы пишите в этой же таблице opts = {}, что будет подразумевать передачу параметров по умолчанию  
+    2. Либо require('название_плагина').setup({})
 
-gd – Go to definition (Перейти к определению)
-ctrl
