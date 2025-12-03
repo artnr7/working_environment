@@ -56,8 +56,7 @@ return {
             return argv
         end,
         cwd = "${workspaceFolder}",
-        stopAtEntry = true,
-        MIMode = "gdb",
+        stopAtEntry = true, MIMode = "gdb",
         miDebuggerPath = "/usr/bin/gdb",
         setupCommands = {
             {

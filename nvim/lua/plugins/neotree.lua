@@ -8,7 +8,7 @@
     },
     config = function()
       require("neo-tree").setup({
- --       close_if_last_window = true, -- Закрыть neo-tree, если это последнее окно
+        close_if_last_window = true, -- Закрыть neo-tree, если это последнее окно
         window = {
           width = 25,
           mappings = {

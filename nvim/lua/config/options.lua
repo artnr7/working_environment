@@ -1,7 +1,6 @@
 vim.g.mapleader = "," -- Устанавливаем лидер-клавишу
 vim.g.maplocalleader = ","
 vim.g.have_nerd_font = true
-vim.opt.clipboard = 'unnamedplus'
 -- vim.opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,
 --                   фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 
@@ -20,8 +19,8 @@ vim.opt.expandtab = true
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
-
 vim.opt.clipboard = "unnamedplus"
+vim.opt.splitright = true
 
 -- Прозрачный фон
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

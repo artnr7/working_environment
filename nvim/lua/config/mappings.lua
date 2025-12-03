@@ -24,7 +24,7 @@ map("<leader>fg", "<cmd>Telescope live_grep<CR>",  "Live grep" )
 map("<leader>fb", "<cmd>Telescope buffers<CR>", "Find buffers" )
 
 -- LSP
---keymap("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+lspmap("gd", vim.lsp.buf.definition, "Go to definition" )
 -- Rename the variable under your cursor.
 --  Most Language Servers support renaming across files, etc.
 lspmap('grn', vim.lsp.buf.rename, '[R]e[n]ame')
