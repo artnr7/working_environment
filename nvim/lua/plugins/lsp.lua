@@ -1,4 +1,15 @@
 return {
+  {"mason-org/mason.nvim",
+    opts = {
+        ui = {
+            icons = {
+                package_installed = "✓",
+                package_pending = "➜",
+                package_uninstalled = "✗"
+            }
+        }
+    }
+  },
   {"neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = 
@@ -10,8 +21,50 @@ return {
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
 
-      -- Allows extra capabilities provided by blink.cmp
-      'saghen/blink.cmp',
+      {
+        -- Репозиторий, который содержит в себе контекст для функций,
+        -- который содержит в себе nvim
+        -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+        -- used for completion, annotations and signatures of Neovim apis
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+          library = {
+            -- see the configuration section for more details
+            -- load luvit types when the `vim.uv` word is found
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
+        },
+      },
+      { -- optional cmp completion source for require statements and module annotations
+        "hrsh7th/nvim-cmp",
+        opts = function(_, opts)
+          opts.sources = opts.sources or {}
+          table.insert(opts.sources, {
+            name = "lazydev",
+            group_index = 0, -- set group index to 0 to skip loading luals completions
+          })
+        end,
+      },
+      { -- optional blink completion source for require statements and module annotations
+        "saghen/blink.cmp",
+
+        opts = {
+          sources = {
+            -- add lazydev to your completion providers
+            default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+            providers = {
+              lazydev = {
+                name = "lazydev",
+                module = "lazydev.integrations.blink",
+                -- make lazydev completions top priority (see `:h blink.cmp`)
+                score_offset = 100,
+              },
+            },
+          },
+        },
+      }
+
     },
      config = function()
       --  This function gets run when an LSP attaches to a particular buffer.
@@ -57,30 +110,22 @@ return {
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
           map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+
+          -- Jump to the type of the word under your cursor.
+          --  Useful when you're not sure what type a variable is and you want to see
+          --  the definition of its *type*, not where it was *defined*.
+          map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
         end,
       })
     end,
   },
-  {"mason-org/mason.nvim",
-    opts = {
-        ui = {
-            icons = {
-                package_installed = "✓",
-                package_pending = "➜",
-                package_uninstalled = "✗"
-            }
-        }
-    }
-  },
   {"mason-org/mason-lspconfig.nvim",
     opts = {
       automatic_enable = true,
-      ensure_installed = {"lua_ls", "clangd", "marksman",
-      "luacheck"}
-    },
-    dependencies = 
-     { "neovim/nvim-lspconfig",
-        "mason-org/mason.nvim",
-     }, 
+      ensure_installed = {
+        -- I don't know why but lua_ls doesn't work
+        --"lua_ls",
+        "clangd", "marksman"}
+    } 
   },
 }
