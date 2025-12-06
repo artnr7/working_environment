@@ -1,0 +1,5 @@
+/root/projs/working_environment/out/Debug/CMakeFiles/shape_detector.dir
+/root/projs/working_environment/out/Debug/CMakeFiles/run_shape_detector.dir
+/root/projs/working_environment/out/Debug/CMakeFiles/test.dir
+/root/projs/working_environment/out/Debug/CMakeFiles/edit_cache.dir
+/root/projs/working_environment/out/Debug/CMakeFiles/rebuild_cache.dir

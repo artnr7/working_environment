@@ -1,8 +1,8 @@
 local keymap = vim.keymap.set
 
 local map = function(keys, func, desc, mode)
-	mode = mode or "n"
-	vim.keymap.set(mode, keys, func, { desc = "Default: " .. desc })
+  mode = mode or "n"
+  vim.keymap.set(mode, keys, func, { desc = "Default: " .. desc })
 end
 
 -- Main
@@ -19,6 +19,56 @@ map("<C-k>", "<C-w>k", "Change to the upper win")
 map("<leader>ff", "<cmd>Telescope find_files<CR>", "Find files")
 map("<leader>fg", "<cmd>Telescope live_grep<CR>", "Live grep")
 map("<leader>fb", "<cmd>Telescope buffers<CR>", "Find buffers")
+
+-- cmake-tools
+keymap("n", "<leader>cg", function()
+  vim.cmd("CMakeGenerate")
+end, { desc = "CMake Generate" })
+
+keymap("n", "<leader>cb", function()
+  vim.cmd("CMakeBuild")
+end, { desc = "CMake Build" })
+
+keymap("n", "<leader>cc", function()
+  vim.cmd("CMakeClean")
+end, { desc = "CMake Clean" })
+
+keymap("n", "<leader>cd", function()
+  vim.cmd("CMakeDebug")
+end, { desc = "CMake Debug" })
+
+keymap("n", "<leader>cr", function()
+  vim.cmd("CMakeRun")
+end, { desc = "CMake Run" })
+
+keymap("n", "<leader>cs", function()
+  vim.cmd("CMakeStop")
+end, { desc = "CMake Stop" })
+
+--Persistance
+-- load the session for the current directory
+vim.keymap.set("n", "<leader>qs", function()
+  require("persistence").load()
+end)
+
+-- select a session to load
+vim.keymap.set("n", "<leader>qS", function()
+  require("persistence").select()
+end)
+
+-- load the last session
+vim.keymap.set("n", "<leader>ql", function()
+  require("persistence").load({ last = true })
+end)
+
+-- stop Persistence => session won't be saved on exit
+vim.keymap.set("n", "<leader>qd", function()
+  require("persistence").stop()
+end)
+
+-- Markdown
+vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdown Preview" })
+vim.keymap.set("v", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdown Preview" })
 
 -- LSP
 --keymap("n", "K", vim.lsp.buf.hover, { desc = "Show documentation" })

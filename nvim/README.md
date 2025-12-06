@@ -1,4 +1,4 @@
-## Полное руководство по изучению nvim лежит в kickstart.nvim/init.lua
+# Полное руководство по изучению nvim лежит в kickstart.nvim/init.lua
 Логика nvim сложна и незабываема, начиная с кеймапов, заканчивая настройкой плагинов
 
 
@@ -36,7 +36,7 @@ ChatGPT.nvim — интеграция с ChatGPT для автогенераци
 
 Todo Comments — выделение комментариев TODO, FIXME и др.
 
-### Themes
+### Themes  
 github.com/topics/neovim-colorscheme
 github.com/vague-theme/vague.nvim
 
