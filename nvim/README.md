@@ -3,7 +3,7 @@
 
 
 Список системных пакетов обязательных к установке:
-luarocks xsel cargo python3
+luarocks xsel cargo python3 python-pip wget
 Копируйте и загружайте с помощью вашего пакетного менеджера
 (! речь идёт не про плагины nvim, а про пакеты Линукс)
 
@@ -48,7 +48,7 @@ https://www.youtube.com/watch?v=CuWfgiwI73Q
 https://github.com/nvim-lua
 Тред посвящённый смене esc на capslock
 https://www.reddit.com/r/neovim/comments/12inq2s/how_to_keymap_caps_lock_key_to_be_used_as_esc_for/
-
+https://github.com/Sin-cy/dotfiles/blob/main/nvim/.config/nvim/lua/sethy/plugins/lsp/lspconfig.lua
 
 ### Некоторые штуки, которые были полезны лично мне
 * Чтобы посмотреть документацию по какой-либо функции используйте help <func
@@ -64,4 +64,5 @@ Mason - это такой плагин, который скачивает бин
 
 Для плагинов, использующих Lazy.nvim или аналогичные менеджеры, opts из разных мест объединяются по ключам: если ключ встречается дважды, побеждает последний, если ключ уникален — добавляется.
 
-
+### nvim-cmp
+cmp-nvim-lsp - интеграция nvim-cmp в lsp
